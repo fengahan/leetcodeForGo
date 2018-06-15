@@ -1,8 +1,6 @@
 package main
 
 import (
-	"strconv"
-	"bytes"
 	"fmt"
 )
 
@@ -11,26 +9,21 @@ func main() {
 	fmt.Println(v)
 }
 func reverse(x int) int {
-
-	var intString []rune
-	if x >0 {
-		intString=[]rune(strconv.Itoa(x))
-	}else {
-		intString=[]rune(strconv.Itoa(-x))
+	var  step  =0
+	var  s=0
+	for x!=0{
+		e:=x%10
+		x=x/10
+		if step*10 > 2147483648{//正数溢出
+			return 0
+		}
+		if step*10 < -2147483648 {//负数溢出
+			return 0
+		}
+		step=step*10+e
 	}
-	intStringLen:=len(intString)
-	b:=new(bytes.Buffer)
-	var v  string
-	for i:=intStringLen;i>0;i-- {
-		v=string(intString[i-1])
-		b.WriteString(v)
+	if x<0 {
+		return 0-s
 	}
-	s:=b.String()
-	newInt,_:=strconv.Atoi(s)
-	if x>0 && newInt<2147483648{
-		return newInt
-	}else if x<0 && 0-newInt>-2147483648 {
-		return 0-newInt
-	}
-	return 0
+	return step
 }
