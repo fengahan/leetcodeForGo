@@ -14,10 +14,10 @@ func reverse(x int) int {
 	for x!=0{
 		e:=x%10
 		x=x/10
-		if step*10 > 2147483648{//正数溢出
+		if step*10 > 2147483647{//正数溢出
 			return 0
 		}
-		if step*10 < -2147483648 {//负数溢出
+		if step*10 < -2147483647 {//负数溢出
 			return 0
 		}
 		step=step*10+e
