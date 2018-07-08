@@ -28,6 +28,7 @@ func Palindrome(number int)bool  {
 			continue
 		}else {
 			f=false
+			break
 		}
 	}
 
