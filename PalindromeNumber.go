@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 
-	var n=10
+	var n=101101
 	v:=Palindrome(n)
 	fmt.Println(v)
 }
@@ -13,12 +13,11 @@ func Palindrome(number int)bool  {
 		return false
 	}
 	var n int
-	n=number
-	nv:=number
+
 	var arr =make([]int,0)
-	for nv >0{
-		n=nv%10
-		nv=nv/10
+	for number >0{
+		n=number%10
+		number=number/10
 		arr=append(arr,n)
 	}
 	l:=len(arr)
